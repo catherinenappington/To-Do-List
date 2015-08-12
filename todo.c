@@ -24,7 +24,20 @@ int main()
     }
     ptr.next = '\0'; //do I need this or will it already be null by default?
 
-    //display list
+    ptr = *head;
+    for(int i = 1; ptr != '\0'; i++)
+    {
+        printf("%d. %s\n", i, ptr.item);
+    }
+
+    /*
+    Next a loop is needed that will continue until
+    the list is empty or the user decided to end
+    the program. The user will be able to enter the
+    number of a listed item to have it removed.
+    There should probably be a way to add more items
+    at this point too.
+    */
 
     //free every node that comes after first
     free(first);
