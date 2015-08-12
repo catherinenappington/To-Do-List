@@ -6,10 +6,6 @@ typedef struct
     Node next;
 } Node;
 
-Node add(LinkedList * list, string newItem);
-void remove(LinkedList * list, int itemNum);
-void display(LinkedList * list);
-
 int main()
 {
     Node first = malloc(sizeof(Node));
@@ -26,43 +22,14 @@ int main()
         ptr.next = malloc(sizeof(Node));
         scanf("%s", inStr);
     }
+    ptr.next = '\0'; //do I need this or will it already be null by default?
 
-    display();
+    //display list
 
+    //free every node that comes after first
     free(first);
     free(inStr);
     free(ptr);
 
     return 0;
-}
-
-Node add(LinkedList * list, string newItem)
-{
-    Node ptr = *head;
-    Node newNode = {newItem, '\0'}
-
-    while(ptr.next != '\0')
-        ptr = ptr.next;
-
-    ptr.next = newNode;
-
-    return newNode;
-}
-
-void remove(LinkedList * list, int itemNum)
-{
-    Node ptr = *head;
-}
-
-void display(LinkedList * list)
-{
-    Node ptr = *head;
-
-    printf("To Do:\n");
-    if(ptr != '\0');
-        while(ptr.next != '\0')
-        {
-            printf("%s\n", ptr.item);
-            ptr = ptr.next;
-        }
 }
