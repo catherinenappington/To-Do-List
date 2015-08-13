@@ -1,38 +1,40 @@
 #include <stdio.h>
 #include <string.h>
-#define NULL \0
 
-typedef struct
+typedef struct Node Node;
+struct Node
 {
-    string item;
-    Node next;
-} Node;
+    char item[99];
+    Node *next;
+};
 
 int main()
 {
-    Node * head = malloc(sizeof(Node));
-    string * inStr = malloc(sizeof(string));
+    Node * head;
+    char inStr[99];
     int * inNum = malloc(sizeof(int));
-    Node * ptr = malloc(sizeof(Node));
-    Node temp;
-    ptr = head;
+    Node * ptr = head;
+    Node * temp;
+    int i;
 
 
     printf("To Do List\nWhat needs to be done?\nPress enter after each entry. Press \"0\" when you are done.");
 
-    scanf("%s", *inStr);
-    while(inStr != '0')
+    fgets(inStr, 99, stdin);
+    strcpy(head->item, inStr);
+    ptr = ptr->next;
+    while(inStr != "0")
     {
-        ptr.item = *inStr;
-        ptr.next = malloc(sizeof(Node));
-        scanf("%s", *inStr);
+        strcpy(ptr->item, inStr);
+        ptr = ptr->next;
+        fgets(inStr, 99, stdin);
     }
-    ptr.next = NULL; //do I need this or will it already be null by default?
+    ptr->next = NULL; //do I need this or will it already be null by default?
 
     ptr = head;
-    for(int i = 1; ptr != NULL; i++)
+    for(i = 1; ptr != NULL; i++)
     {
-        printf("%d. %s\n", i, ptr.item);
+        printf("%d. %s\n", i, ptr->item);
     }
 
     /*
@@ -43,30 +45,29 @@ int main()
     There should probably be a way to add more items
     at this point too.
     */
-    scanf("%d", *inNum);
-    while(inNum != "0" && *head != NULL)
+    *inNum = getchar();
+    while(*inNum != 0 && head != NULL)
     {
-        for(int i = 1; ptr != NULL; i++)
+        for(i = 1; ptr != NULL; i++)
         {
-            if(i == *intNum)
+            if(i == *inNum)
             {
                 temp = ptr;
-                ptr = ptr.next;
+                ptr = ptr->next;
                 free(temp);
             }
             else
-                ptr = ptr.next;
+                ptr = ptr->next;
         }
-        scanf("%d", inNum);
+        inNum = getchar();
     }
 
-    for(ptr = head; ptr* != NULL; ptr* = temp)
+    for(ptr = head; ptr != NULL; ptr = temp)
     {
-        temp = ptr.next;
+        temp = ptr->next;
         free(ptr);
     }
     free(head);
-    free(inStr);
     free(ptr);
 
     return 0;
