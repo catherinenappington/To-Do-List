@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#define NULL \0
 
 typedef struct
 {
@@ -25,7 +27,7 @@ int main()
         ptr.next = malloc(sizeof(Node));
         scanf("%s", *inStr);
     }
-    ptr.next = 'NULL'; //do I need this or will it already be null by default?
+    ptr.next = NULL; //do I need this or will it already be null by default?
 
     ptr = head;
     for(int i = 1; ptr != NULL; i++)
