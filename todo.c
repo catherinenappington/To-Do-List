@@ -8,24 +8,27 @@ typedef struct
 
 int main()
 {
-    Node first = malloc(sizeof(Node));
+    Node * head = malloc(sizeof(Node));
     string * inStr = malloc(sizeof(string));
+    int * inNum = malloc(sizeof(int));
     Node * ptr = malloc(sizeof(Node));
-    ptr = *head;
+    Node temp;
+    ptr = head;
+
 
     printf("To Do List\nWhat needs to be done?\nPress enter after each entry. Press \"0\" when you are done.");
 
-    scanf("%s", inStr);
+    scanf("%s", *inStr);
     while(inStr != '0')
     {
-        ptr.item = inStr;
+        ptr.item = *inStr;
         ptr.next = malloc(sizeof(Node));
-        scanf("%s", inStr);
+        scanf("%s", *inStr);
     }
-    ptr.next = '\0'; //do I need this or will it already be null by default?
+    ptr.next = 'NULL'; //do I need this or will it already be null by default?
 
-    ptr = *head;
-    for(int i = 1; ptr != '\0'; i++)
+    ptr = head;
+    for(int i = 1; ptr != NULL; i++)
     {
         printf("%d. %s\n", i, ptr.item);
     }
@@ -38,9 +41,29 @@ int main()
     There should probably be a way to add more items
     at this point too.
     */
+    scanf("%d", *inNum);
+    while(inNum != "0" && *head != NULL)
+    {
+        for(int i = 1; ptr != NULL; i++)
+        {
+            if(i == *intNum)
+            {
+                temp = ptr;
+                ptr = ptr.next;
+                free(temp);
+            }
+            else
+                ptr = ptr.next;
+        }
+        scanf("%d", inNum);
+    }
 
-    //free every node that comes after first
-    free(first);
+    for(ptr = head; ptr* != NULL; ptr* = temp)
+    {
+        temp = ptr.next;
+        free(ptr);
+    }
+    free(head);
     free(inStr);
     free(ptr);
 
